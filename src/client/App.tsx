@@ -19,7 +19,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
     render () {
         return (
             <main className="container">
-                <h1 className="covalence-blue">Hello {this.state.name}!</h1>
+                <h1 className="covalence-blue">Hello!</h1>
                 <h2></h2>
             </main>
         )

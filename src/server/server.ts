@@ -4,7 +4,7 @@ import * as passport from 'passport';
 
 import './middleware/localstrategy';
 import './middleware/bearerstrategy';
-//import routes from './routes/index';
+import routes from './routes/index';
 
 const app = express();
 
@@ -13,7 +13,7 @@ let p = path.join(__dirname, '../public');
 app.use(express.static(p));
 app.use(express.json());
 app.use(passport.initialize());
-//app.use(routes);
+app.use(routes);
 
 app.use('*', (req, res, next) => {
     res.sendFile(path.join(__dirname, `../public/index.html`));
