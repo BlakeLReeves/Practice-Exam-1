@@ -31,9 +31,9 @@ export default class UpdateBook extends React.Component<IUpdateBookProps, IUpdat
     }
 
     async componentWillMount() {
-        // if(!Author || Author.authorid === null || Author.role !== 'admin') {
-        //     this.props.history.replace('/login');
-        // }
+        if(!User || User.userid === null || User.role !== 'admin') {
+            this.props.history.replace('/login');
+        }
         let id = this.props.match.params.id;
 
         try {

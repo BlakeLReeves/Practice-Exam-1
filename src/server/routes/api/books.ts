@@ -33,7 +33,7 @@ booksRouter.get('/:id?', async (req, res, next) => {
     }
 });
 
-booksRouter.delete('/:id', async(req, res, next) => {
+booksRouter.delete('/:id', isAdmin, async(req, res, next) => {
     try {
         let id = req.params.id;
         let book = await DB.Books.deleteBook(id);
@@ -44,7 +44,7 @@ booksRouter.delete('/:id', async(req, res, next) => {
     }
 });
 
-booksRouter.post('/', async(req, res, next) => {
+booksRouter.post('/', isAdmin, async(req, res, next) => {
     try {
         let categoryid = req.body.categoryid;
         let title = req.body.title;
@@ -58,7 +58,7 @@ booksRouter.post('/', async(req, res, next) => {
     }
 });
 
-booksRouter.put('/:id?', async(req, res, next) => {
+booksRouter.put('/:id?', isAdmin, async(req, res, next) => {
     try {
         let id = req.params.id;
         let categoryid = req.body.categoryid;

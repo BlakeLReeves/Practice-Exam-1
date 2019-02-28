@@ -31,9 +31,9 @@ export default class PostBook extends React.Component<IPostBookProps, IPostBookS
     }
 
     async componentWillMount() {
-        // if(!Author || Author.authorid === null || Author.role !== 'admin') {
-        //     this.props.history.replace('/login');
-        // }
+        if(!User || User.userid === null || User.role !== 'admin') {
+            this.props.history.replace('/login');
+        }
         try {
             let categories = await json('/api/categories');
             this.setState({ categories });

@@ -7,6 +7,8 @@ import RequestBooks from './public/RequestBooks';
 import ViewBook from './public/ViewBook';
 import UpdateBook from './admin/UpdateBook';
 import PostBook from './admin/PostBook';
+import Login from './admin/Login';
+import Register from './admin/Register';
 
 export default class IApp extends React.Component<IAppProps, IAppState> {
     render() {
@@ -21,6 +23,8 @@ export default class IApp extends React.Component<IAppProps, IAppState> {
                             <Route exact path='/books/new' component={PostBook} />
                             <Route exact path='/books/:id' component={ViewBook} />
                             <Route exact path='/books/:id/update' component={UpdateBook} />
+                            <Route exact path='/login' component={Login} />
+                            <Route exact path='/register' component={Register} />
                         </Switch>
                     </div>
                 </>
