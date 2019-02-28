@@ -16,7 +16,7 @@ categoriesRouter.get('/', async (req, res, next) => {
 categoriesRouter.get('/:id?', async (req, res, next) => {
     try {
         let id = req.params.id;
-        let category = await DB.Categories.getOneCategory(id);
+        let [category] = await DB.Categories.getOneCategory(id);
         res.send(category);
     } catch(e) {
         console.log(e);

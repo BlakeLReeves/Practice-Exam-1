@@ -1,35 +1,34 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import './scss/app';
+import Home from './public/Home';
+import Navbar from './shared/Navbar';
+import RequestBooks from './public/RequestBooks';
+import ViewBook from './public/ViewBook';
+import UpdateBook from './admin/UpdateBook';
+import PostBook from './admin/PostBook';
 
-export default class App extends React.Component<IAppProps, IAppState> {
-
-    constructor(props: IAppProps) {
-        super(props);
-
-        this.state = { name: null };
-    }
-
-    async componentWillMount() {
-        let r = await fetch('/api/hello');
-        let name = await r.json();
-        this.setState({ name })
-    }
-
-    render () {
+export default class IApp extends React.Component<IAppProps, IAppState> {
+    render() {
         return (
-            <main className="container">
-                <h1 className="covalence-blue">Hello!</h1>
-                <h2></h2>
-            </main>
-        )
+            <Router>
+                <>
+                    <Navbar />
+                    <div className="container">
+                        <Switch>
+                            <Route exact path='/' component={Home} />
+                            <Route exact path='/books' component={RequestBooks} />
+                            <Route exact path='/books/new' component={PostBook} />
+                            <Route exact path='/books/:id' component={ViewBook} />
+                            <Route exact path='/books/:id/update' component={UpdateBook} />
+                        </Switch>
+                    </div>
+                </>
+            </Router>
+        );
     }
 }
 
-interface IAppProps {
+interface IAppProps { }
 
-}
-
-interface IAppState {
-    name: string;
-}
+interface IAppState { }

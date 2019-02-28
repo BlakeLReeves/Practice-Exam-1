@@ -1,8 +1,8 @@
 import { Query } from '../index';
 
-const getAllBooks = async () => Query(`SELECT * FROM Books`);
+const getAllBooks = async () => Query(`SELECT b.*, c.name FROM Books b JOIN Categories c ON c.id = b.categoryid`);
 
-const getOneBook = async (id: number) => Query (`SELECT * FROM Books WHERE id = ?`, [id]);
+const getOneBook = async (id: number) => Query (`SELECT b.*, c.name FROM Books b JOIN Categories c ON c.id = b.categoryid WHERE b.id = ?`, [id]);
 
 const deleteBook = async (id: number) => Query (`DELETE FROM Books WHERE id = ?`, [id]);
 
